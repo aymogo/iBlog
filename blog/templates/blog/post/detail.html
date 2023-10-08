@@ -1,0 +1,27 @@
+{% extends 'blog/index.html' %}
+{% load static %}
+{% block content %}
+    <p></p>
+    <p></p>
+    <p></p>
+        <article>
+            <h1><a href="{{post.get_absolute_url}}">{{post.title}}</a></h1>
+            <p class="article_pub-date">Published
+                {{post.publish}} by {{post.author}}
+            </p>
+            <p>
+                <a href="{% url 'blog:post_share' post.id %}">
+                Share this post
+                </a>
+            </p>
+            <div class="row">
+                <div class="large-12 columns">
+                        <img class="float-right" src="{% if post.image %}{{ post.image.url }}
+                        {% else %}{{ '/media/post-images/111.jpg' }}{% endif %}" />
+                    <p></p>
+                    <p>{{post.body}}</p>
+                </div>
+            </div>
+        </article>
+        <hr />
+{% endblock %}

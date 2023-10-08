@@ -1,0 +1,23 @@
+{% extends 'blog/index.html' %}
+{% load static %}
+{% block content %}
+    {% for post in posts %}
+        <article>
+            <h1><a href="{{post.get_absolute_url}}">{{post.title}}</a></h1>
+            <p class="article_pub-date">Published
+                {{post.publish}} by {{post.author|title}}
+            </p>
+    
+            <div class="row">
+                <div class="large-12 columns">
+                        <img class="float-right" src="{% if post.image %}{{ post.image.url }}
+                            {% else %}{{ '/media/post-images/111.jpg' }}{% endif %}" />
+                    <p></p>
+                </div>
+            </div>
+        <a href="{{post.get_absolute_url}}" class="button">Read More</a>
+        </article>
+        <hr />
+    {% endfor %}
+
+{% endblock %}
